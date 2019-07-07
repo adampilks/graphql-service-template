@@ -1,0 +1,34 @@
+{
+  "presets": [
+    "@babel/typescript",
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "@context": "./src/context",
+          "@dataSources": "./src/dataSources",
+          "@errors": "./src/errors",
+          "@resolvers": "./src/resolvers",
+          "@services": "./src/services",
+          "@typeDefs": "./src/typeDefs",
+          "@schemaTypes": "./src/generated/schemaTypes",
+          "@utils": "./src/utils"
+        }
+      }
+    ],
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-proposal-optional-chaining"
+  ]
+}

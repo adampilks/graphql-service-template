@@ -1,0 +1,117 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    "prettier",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:fp/recommended",
+    "plugin:eslint-comments/recommended",
+    "plugin:sonarjs/recommended"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "prettier",
+    "import",
+    "fp",
+    "eslint-comments",
+    "sonarjs",
+    "filenames",
+    "no-switch-statements",
+    "no-only-tests"
+  ],
+
+  "settings": {
+    "import/extensions": [".ts"],
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["@context", "./src/context"],
+          ["@dataSources", "./src/dataSources"],
+          ["@errors", "./src/errors"],
+          ["@resolvers", "./src/resolvers"],
+          ["@services", "./src/services"],
+          ["@typeDefs", "./src/typeDefs"],
+          ["@schemaTypes", "./src/generated/schemaTypes"],
+          ["@utils", "./src/utils"]
+        ],
+        "extensions": [".ts", ".js", ".jsx", ".json"]
+      }
+    },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts"]
+    }
+  },
+
+  "rules": {
+    "quotes": [2, "single"],
+    "eslint-comments/no-unused-disable": "error",
+    "fp/no-class": "off",
+    "fp/no-mutating-methods": [
+      "error",
+      {
+        "allowedObjects": ["R"]
+      }
+    ],
+    "fp/no-mutation": [
+      "error",
+      {
+        "allowThis": true,
+        "commonjs": true
+      }
+    ],
+    "fp/no-nil": "off",
+    "fp/no-rest-parameters": "off",
+    "fp/no-this": "off",
+    "fp/no-unused-expression": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
+        "newlines-between": "never"
+      }
+    ],
+    "sonarjs/no-duplicate-string": "off",
+    "max-lines": ["error", 1000],
+    "max-lines-per-function": ["error", 200],
+    "max-params": ["error", 7],
+    "no-alert": "error",
+    "no-array-constructor": "error",
+    "no-caller": "error",
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "no-debugger": "error",
+    "no-delete-var": "error",
+    "no-empty": "error",
+    "no-implicit-coercion": "error",
+    "no-nested-ternary": "error",
+    "no-only-tests/no-only-tests": "error",
+    "no-sequences": "error",
+    "no-shadow": "error",
+    "no-switch-statements/no-switch": "error",
+    "no-undefined": "off",
+    "no-unused-expressions": "error",
+    "no-useless-catch": "error",
+    "no-void": "error",
+    "prettier/prettier": "error"
+  }
+}

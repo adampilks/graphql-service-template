@@ -1,0 +1,7 @@
+
+!.eslintrc.json
+# ignore files with spam
+**/node_modules/**
+**/src/generated/**
+**/build/**
+**/.history/**

@@ -11,7 +11,6 @@ export const baseResolver = createResolver<
 
   // resolve the error, if a known error allow it to be sent, if not then return a generic formatted error
   (root, args, context, error) => {
-    return new UnknownError();
-    // return isInstance(error) ? error : new UnknownError();
+    return isInstance(error) ? error : new UnknownError();
   }
 );

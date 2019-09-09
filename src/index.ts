@@ -5,10 +5,14 @@ import { dataSources } from '@dataSources';
 import { createContext, contextProviders } from '@context';
 
 const server = new ApolloServer({
-  context: ({ req }) =>
-    // here we want to rip out the headers and use them to generate the context
-    // TODO : handle .connection.context for socket connections
-    createContext(req.headers, contextProviders),
+  context: async ({ req, connection }) => {
+    if (connection) {
+      // this is a websocket connection which has already resolved it's context onConnect
+      return connection.context;
+    }
+
+    return createContext(req.headers, contextProviders);
+  },
   subscriptions: {
     onConnect: connectionParams => {
       // here we want to use the connectionParams to generate the context
